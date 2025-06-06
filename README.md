@@ -99,7 +99,7 @@ Feel free to fork this project and submit pull requests for improvements!
 
 ## License
 
-[Add your license information here]
+This project is open source and available under the MIT License.
 
 ## Troubleshooting
 
