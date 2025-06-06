@@ -52,7 +52,7 @@ form.addEventListener("submit", async function(event) {
 
     } catch (error) {
         loadingElement.className = "bot";
-        loadingElement.innerHTML = `<b>GPT-2:</b> Error: Could not fetch response.`;
+        loadingElement.innerHTML = `<b>AI:</b> Error: Could not fetch response.`;
         // Re-enable the submit button and restore its color even on error
         submitButton.disabled = false;
         submitButton.style.backgroundColor = "#007acc";
