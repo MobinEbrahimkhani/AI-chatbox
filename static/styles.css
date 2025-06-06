@@ -1,0 +1,106 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: url('/static/4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    backdrop-filter: blur(8px);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #ffffff85;
+    backdrop-filter: blur(0px);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+    margin-top: 0;
+}
+
+#chatbox {
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 10px;
+    height: 400px;
+    overflow-y: auto;
+    font-size: 14px;
+    background-color: #fafafa;
+    margin-bottom: 10px;
+}
+
+.user {
+    color: #007acc;
+    margin-bottom: 8px;
+}
+
+.bot {
+    color: #228b22;
+    margin-bottom: 8px;
+}
+
+.loading {
+    color: #d2691e;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+}
+
+#user_input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+#user_input:focus {
+    border-color: #007acc;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007acc;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #005f8a;
+}
+
+/* Optional: nice scrollbar */
+#chatbox::-webkit-scrollbar {
+    width: 8px;
+}
+#chatbox::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 4px;
+}
