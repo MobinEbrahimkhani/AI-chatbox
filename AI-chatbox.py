@@ -8,8 +8,8 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-# Load GPT2 pipeline
-generator = pipeline("text-generation", model="gpt2", device=-1)
+# Load AI pipeline
+generator = pipeline("text-generation", model="EleutherAI/gpt-neo-125M", device=-1)
 
 # Static (HTML/CSS/JS)
 app.mount("/static", StaticFiles(directory="static"), name="static")

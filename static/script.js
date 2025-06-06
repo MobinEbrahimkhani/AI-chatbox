@@ -12,7 +12,7 @@ form.addEventListener("submit", async function(event) {
 
     const loadingElement = document.createElement("div");
     loadingElement.className = "loading";
-    loadingElement.innerHTML = "<b>GPT-2:</b> Typing...";
+    loadingElement.innerHTML = "<b>AI:</b> Typing...";
     chatbox.appendChild(loadingElement);
     chatbox.scrollTop = chatbox.scrollHeight;
 
@@ -38,7 +38,7 @@ form.addEventListener("submit", async function(event) {
         function showWithDelay() {
             result += arData[i] + " ";
             loadingElement.className = "bot";
-            loadingElement.innerHTML = `<b>GPT-2:</b> ${result}`;
+            loadingElement.innerHTML = `<b>AI:</b> ${result}`;
             i += 1;
 
             if (i >= arData.length) {
