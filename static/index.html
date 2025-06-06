@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPT-2 Chatbot</title>
+    <style>
+    html, body {
+        height: 100%;
+    }
+    body {
+        background-image: url('/static/4.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        backdrop-filter: blur(8px);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* or center if you want vertical centering */
+        box-sizing: border-box;
+    }
+        .container {
+            background-color: #ffffff85;
+            backdrop-filter: blur(0px);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-top: 0;
+        }
+
+        #chatbox {
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            padding: 10px;
+            height: 400px;
+            overflow-y: auto;
+            font-size: 14px;
+            background-color: #fafafa;
+            margin-bottom: 10px;
+        }
+
+        .user {
+            color: #007acc;
+            margin-bottom: 8px;
+        }
+
+        .bot {
+            color: #228b22;
+            margin-bottom: 8px;
+        }
+
+        .loading {
+            color: #d2691e;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+        }
+
+        #user_input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+            margin-right: 10px;
+            transition: border-color 0.3s;
+        }
+
+        #user_input:focus {
+            border-color: #007acc;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007acc;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #005f8a;
+        }
+
+        /* Optional: nice scrollbar */
+        #chatbox::-webkit-scrollbar {
+            width: 8px;
+        }
+        #chatbox::-webkit-scrollbar-thumb {
+            background-color: #cccccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GPT-2 Chatbot</h1>
+        <div id="chatbox"></div>
+
+        <form id="chatForm">
+            <input type="text" id="user_input" placeholder="Type your message here..." autocomplete="off">
+            <button type="submit" id="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("chatForm");
+        const submitButton = document.getElementById("submit");
+    
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault();
+    
+            const user_input = document.getElementById("user_input").value;
+            if (!user_input.trim()) return;
+    
+            const chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML += `<div class="user"><b>You:</b> ${user_input}</div>`;
+    
+            const loadingElement = document.createElement("div");
+            loadingElement.className = "loading";
+            loadingElement.innerHTML = "<b>GPT-2:</b> Typing...";
+            chatbox.appendChild(loadingElement);
+            chatbox.scrollTop = chatbox.scrollHeight;
+    
+            // Disable the submit button and change color to gray
+            submitButton.disabled = true;
+            submitButton.style.backgroundColor = "#cccccc";
+            submitButton.style.cursor = "not-allowed";
+    
+            try {
+                document.getElementById("user_input").value = "";
+                const response = await fetch("/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ prompt: user_input })
+                });
+                const data = await response.json();
+                let result = "";
+                const arData = data.response.split(" ");
+                let i = 0;
+    
+                const st = setInterval(showWithDelay, 100);
+    
+                function showWithDelay() {
+                    result += arData[i] + " ";
+                    loadingElement.className = "bot";
+                    loadingElement.innerHTML = `<b>GPT-2:</b> ${result}`;
+                    i += 1;
+    
+                    if (i >= arData.length) {
+                        clearInterval(st);
+                        // Re-enable the submit button and restore its color
+                        submitButton.disabled = false;
+                        submitButton.style.backgroundColor = "#007acc";
+                        submitButton.style.cursor = "pointer";
+                    }
+                }
+    
+            } catch (error) {
+                loadingElement.className = "bot";
+                loadingElement.innerHTML = `<b>GPT-2:</b> Error: Could not fetch response.`;
+                // Re-enable the submit button and restore its color even on error
+                submitButton.disabled = false;
+                submitButton.style.backgroundColor = "#007acc";
+                submitButton.style.cursor = "pointer";
+            }
+    
+            chatbox.scrollTop = chatbox.scrollHeight;
+        });
+    </script>
+</body>
+</html>
