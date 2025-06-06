@@ -1,10 +1,10 @@
-# GPT-2 Chatbot
+# GPT-Neo Chatbot
 
-A simple web-based chatbot interface powered by GPT-2 using FastAPI and Transformers. Features a clean, modern UI with real-time text generation and typing animations.
+A simple web-based chatbot interface powered by GPT-Neo-125M using FastAPI and Transformers. Features a clean, modern UI with real-time text generation and typing animations.
 
 ## Features
 
-- **GPT-2 Text Generation**: Uses Hugging Face Transformers to generate responses
+- **GPT-Neo Text Generation**: Uses Hugging Face Transformers to generate responses
 - **Modern Web Interface**: Clean, responsive design with glassmorphism effects  
 - **Real-time Chat**: Interactive chatbox with typing animations
 - **Background Blur Effects**: Stylish backdrop with image overlay
@@ -38,7 +38,7 @@ pip install fastapi uvicorn transformers torch
 
 ```
 your-project/
-├── AI-chatbox.py          # FastAPI server with GPT-2 integration
+├── AI-chatbox.py          # FastAPI server with GPT-Neo integration
 ├── Required_modules.txt   # List of required Python packages
 ├── static/
 │   ├── index.html         # Main chat interface
@@ -70,7 +70,7 @@ python -m uvicorn AI-chatbox:app --host globalip --port 8000
 ## How It Works
 
 1. **Backend**: FastAPI serves the static files and provides a `/generate` endpoint
-2. **AI Model**: GPT-2 model processes user input and generates responses
+2. **AI Model**: GPT-Neo-125M model processes user input and generates responses
 3. **Frontend**: JavaScript handles user interactions and displays responses with typing animation
 4. **Styling**: CSS creates a modern glassmorphism interface with backdrop effects
 
@@ -89,7 +89,7 @@ python -m uvicorn AI-chatbox:app --host globalip --port 8000
 ## Technical Details
 
 - **Framework**: FastAPI for high-performance web API
-- **AI Library**: Hugging Face Transformers for GPT-2 integration
+- **AI Library**: Hugging Face Transformers for GPT-Neo integration
 - **Frontend**: Vanilla JavaScript with modern ES6+ features
 - **Styling**: CSS3 with backdrop-filter effects and smooth animations
 
