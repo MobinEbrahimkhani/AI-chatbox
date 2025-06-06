@@ -20,8 +20,8 @@ A simple web-based chatbot interface powered by GPT-2 using FastAPI and Transfor
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
-cd <your-repo-name>
+git clone <https://github.com/MobinEbrahimkhani/AI-chatbox>
+cd <Ai-chatbox>
 ```
 
 2. Install required dependencies:
@@ -66,10 +66,6 @@ To run the server accessible from other devices on your network:
 python -m uvicorn AI-chatbox:app --host 0.0.0.0 --port 8000
 ```
 
-Or use a specific IP address:
-```bash
-python -m uvicorn AI-chatbox:app --host 172.31.4.24 --port 8000
-```
 
 ## How It Works
 
