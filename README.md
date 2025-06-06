@@ -63,7 +63,7 @@ Then open your browser and navigate to `http://localhost:8000`
 
 To run the server accessible from other devices on your network:
 ```bash
-python -m uvicorn AI-chatbox:app --host 0.0.0.0 --port 8000
+python -m uvicorn AI-chatbox:app --host globalip --port 8000
 ```
 
 
