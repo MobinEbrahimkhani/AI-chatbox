@@ -21,7 +21,7 @@ A simple web-based chatbot interface powered by GPT-2 using FastAPI and Transfor
 1. Clone the repository:
 ```bash
 git clone <https://github.com/MobinEbrahimkhani/AI-chatbox>
-cd <Ai-chatbox>
+cd <AI-chatbox>
 ```
 
 2. Install required dependencies:
