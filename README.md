@@ -1,6 +1,7 @@
 # GPT-Neo Chatbot
 
 A simple web-based chatbot interface powered by GPT-Neo-125M using FastAPI and Transformers. Features a clean, modern UI with real-time text generation and typing animations.
+![GPT-Neo Chatbox](./static/screenshot.png)
 
 ## Features
 
