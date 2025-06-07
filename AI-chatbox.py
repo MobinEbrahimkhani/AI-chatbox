@@ -1,5 +1,5 @@
-# Run the server locally:python -m uvicorn FastAPI_project:app --reload
-# Run the server over wifi:python -m uvicorn FastAPI_project:app --host globalIP --port 8000
+# Run the server locally:python -m uvicorn AI-chatbox:app --reload
+# Run the server over wifi:python -m uvicorn AI-chatbox:app --host globalIP --port 8000
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from transformers import pipeline
