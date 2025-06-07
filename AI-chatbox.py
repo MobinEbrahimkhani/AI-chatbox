@@ -1,6 +1,5 @@
 # Run the server locally:python -m uvicorn FastAPI_project:app --reload
-# Run the server over wifi:python -m uvicorn FastAPI_project:app --host 172.31.4.24 --port 8000
-# ip: 172.31.4.24
+# Run the server over wifi:python -m uvicorn FastAPI_project:app --host globalIP --port 8000
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from transformers import pipeline
