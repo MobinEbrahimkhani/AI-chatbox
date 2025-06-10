@@ -96,7 +96,7 @@ button:hover {
     background-color: #005f8a;
 }
 
-/* Optional: nice scrollbar */
+
 #chatbox::-webkit-scrollbar {
     width: 8px;
 }

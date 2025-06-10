@@ -1,5 +1,39 @@
 const form = document.getElementById("chatForm");
-const submitButton = document.getElementById("submit");
+const submit_button = document.getElementById("submit");
+
+const voice_button = document.getElementById("voiceBtn");
+const user_input = document.getElementById("user_input");
+
+// Check browser support
+const SpeechRecognition = window.Speechecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-US"; 
+
+    voice_button.addEventListener("click", () => {
+        recognition.start();
+    });
+
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        user_input.value = transcript;
+    };
+
+    recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+    };
+} else {
+    voice_button.disabled = true;
+    alert("Speech recognition not supported in this browser.");
+}
+
+function speak(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US"; 
+    window.speechSynthesis.speak(utterance);
+}
+
 
 form.addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -16,10 +50,14 @@ form.addEventListener("submit", async function(event) {
     chatbox.appendChild(loadingElement);
     chatbox.scrollTop = chatbox.scrollHeight;
 
-    // Disable the submit button and change color to gray
-    submitButton.disabled = true;
-    submitButton.style.backgroundColor = "#cccccc";
-    submitButton.style.cursor = "not-allowed";
+    // Disable the submit and voice button and change color to gray
+    submit_button.disabled = true;
+    submit_button.style.backgroundColor = "#cccccc";
+    submit_button.style.cursor = "not-allowed";
+
+    voice_button.disabled = true;
+    voice_button.style.backgroundColor = "#cccccc";
+    voice_button.style.cursor = "not-allowed";
 
     try {
         document.getElementById("user_input").value = "";
@@ -43,10 +81,14 @@ form.addEventListener("submit", async function(event) {
 
             if (i >= arData.length) {
                 clearInterval(st);
-                // Re-enable the submit button and restore its color
-                submitButton.disabled = false;
-                submitButton.style.backgroundColor = "#007acc";
-                submitButton.style.cursor = "pointer";
+                // Re-enable the submit and voice button and restore its color
+                submit_button.disabled = false;
+                submit_button.style.backgroundColor = "#007acc";
+                submit_button.style.cursor = "pointer";
+                
+                voice_button.disabled = false;
+                voice_button.style.backgroundColor = "#007acc";
+                voice_button.style.cursor = "pointer";
             }
         }
 
@@ -54,9 +96,9 @@ form.addEventListener("submit", async function(event) {
         loadingElement.className = "bot";
         loadingElement.innerHTML = `<b>AI:</b> Error: Could not fetch response.`;
         // Re-enable the submit button and restore its color even on error
-        submitButton.disabled = false;
-        submitButton.style.backgroundColor = "#007acc";
-        submitButton.style.cursor = "pointer";
+        submit_button.disabled = false;
+        submit_button.style.backgroundColor = "#007acc";
+        submit_button.style.cursor = "pointer";
     }
 
     chatbox.scrollTop = chatbox.scrollHeight;
