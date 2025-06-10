@@ -110,6 +110,7 @@ Notes:
 - **AI Library**: Hugging Face Transformers for GPT-Neo integration
 - **Frontend**: Vanilla JavaScript with modern ES6+ features
 - **Styling**: CSS3 with backdrop-filter effects and smooth animations
+- **Voice Input**: Uses Web Speech API on the frontend for speech-to-text.
 
 ## Contributing
 
