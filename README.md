@@ -12,6 +12,7 @@ A simple web-based chatbot interface powered by GPT-Neo-125M using FastAPI and T
 - **Background Blur Effects**: Stylish backdrop with image overlay
 - **Typing Animation**: Word-by-word response display for natural feel
 - **Button State Management**: Visual feedback during processing
+- **Voice Input Feature**: speech-to-text input using the Web Speech API
 
 ## Prerequisites
 
@@ -67,6 +68,21 @@ To run the server accessible from other devices on your network:
 ```bash
 python -m uvicorn AI-chatbox:app --host globalip --port 8000
 ```
+
+## Voice Input
+
+This chatbot now supports speech-to-text input using the Web Speech API (works in modern browsers like Chrome and Edge).
+
+### How to Use:
+  1.	Click the "Speak" button next to the input box.
+  2.	Speak your question or message.
+  3.	The recognized text will appear in the input field.
+  4.	Press Submit to send the message as usual.
+
+Notes:
+  - Works best in Chrome and Edge.
+  - May not work in some browsers (e.g. Firefox or Safari).
+  - Requires microphone permissions.
 
 
 ## How It Works
