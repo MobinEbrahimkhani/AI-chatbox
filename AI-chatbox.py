@@ -2,13 +2,19 @@
 # Run the server over wifi: python -m uvicorn AI-chatbox:app --host globalIP --port 8000
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse
-from transformers import pipeline
 from fastapi.staticfiles import StaticFiles
+import google.generativeai as genai
+
+
+API_KEY = "AIzaSyCh_LLvoYomDMNG2SkX4V_J8_luUJs9NAY"
+genai.configure(api_key=API_KEY)
+
+model = genai.GenerativeModel("gemini-2.0-flash")
+chat = model.start_chat()
+
 
 app = FastAPI()
 
-# Load AI pipeline
-generator = pipeline("text-generation", model="EleutherAI/gpt-neo-125M", device=-1)
 
 # Static (HTML/CSS/JS)
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -22,6 +28,8 @@ async def get_index():
 async def generate_text(request: Request):
     data = await request.json()
     user_input = data.get("prompt", "")
-    output = generator(user_input, max_length=100, num_return_sequences=1)
-    response = output[0]["generated_text"]
+    output = chat.send_message(user_input)
+    # response = output[0]["generated_text"]
+    response = output.text
+    response = response.replace('*','')
     return JSONResponse(content={"response": response.strip()})
