@@ -2,11 +2,11 @@
 
 A simple web-based chatbot interface powered by GPT-Neo-125M using FastAPI and Transformers. Features a clean, modern UI with real-time text generation and typing animations.
 
-![GPT-Neo Chatbox](./static/screenshot.png)
+![Google GenerativeAI Chatbox](./static/screenshot.png)
 
 ## Features
 
-- **GPT-Neo Text Generation**: Uses Hugging Face Transformers to generate responses
+- **Google GenerativeAI Text Generation**: Uses Google GenerativeAI to generate responses
 - **Modern Web Interface**: Clean, responsive design with glassmorphism effects  
 - **Real-time Chat**: Interactive chatbox with typing animations
 - **Background Blur Effects**: Stylish backdrop with image overlay
@@ -41,7 +41,7 @@ pip install fastapi uvicorn transformers torch
 
 ```
 your-project/
-├── AI-chatbox.py          # FastAPI server with GPT-Neo integration
+├── AI-chatbox.py          # FastAPI server with Google GenerativeAI integration
 ├── Required_modules.txt   # List of required Python packages
 ├── static/
 │   ├── index.html         # Main chat interface
