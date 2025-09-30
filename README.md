@@ -1,6 +1,6 @@
-# GPT-Neo Chatbot
+# Google GenerativeAI Chatbot
 
-A simple web-based chatbot interface powered by GPT-Neo-125M using FastAPI and Transformers. Features a clean, modern UI with real-time text generation and typing animations.
+A simple web-based chatbot interface powered by Google GenerativeAI using FastAPI and Transformers. Features a clean, modern UI with real-time text generation and typing animations.
 
 ![Google GenerativeAI Chatbox](./static/screenshot.png)
 
@@ -88,7 +88,7 @@ Notes:
 ## How It Works
 
 1. **Backend**: FastAPI serves the static files and provides a `/generate` endpoint
-2. **AI Model**: GPT-Neo-125M model processes user input and generates responses
+2. **AI Model**: Google GenerativeAI model processes user input and generates responses
 3. **Frontend**: JavaScript handles user interactions and displays responses with typing animation
 4. **Styling**: CSS creates a modern glassmorphism interface with backdrop effects
 
@@ -107,7 +107,7 @@ Notes:
 ## Technical Details
 
 - **Framework**: FastAPI for high-performance web API
-- **AI Library**: Hugging Face Transformers for GPT-Neo integration
+- **AI Library**: Google generativeAI with the free API_key
 - **Frontend**: Vanilla JavaScript with modern ES6+ features
 - **Styling**: CSS3 with backdrop-filter effects and smooth animations
 - **Voice Input**: Uses Web Speech API on the frontend for speech-to-text.
