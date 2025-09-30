@@ -1,6 +1,6 @@
 # Google GenerativeAI Chatbot
 
-A simple web-based chatbot interface powered by Google GenerativeAI using FastAPI and Transformers. Features a clean, modern UI with real-time text generation and typing animations.
+A simple web-based chatbot interface powered by Google GenerativeAI using FastAPI. Features a clean, modern UI with real-time text generation and typing animations.
 
 ![Google GenerativeAI Chatbox](./static/screenshot.png)
 
