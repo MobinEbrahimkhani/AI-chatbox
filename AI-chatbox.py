@@ -4,9 +4,12 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+API_KEY = os.getenv("MY_API_KEY")
 
-API_KEY = "AIzaSyCh_LLvoYomDMNG2SkX4V_J8_luUJs9NAY"
 genai.configure(api_key=API_KEY)
 
 model = genai.GenerativeModel("gemini-2.0-flash")
